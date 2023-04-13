@@ -1,0 +1,29 @@
+{
+    "name": "geomtoy-documents",
+    "version": "0.0.0",
+    "description": "A 2D geometry responsive computing, visualizing and interacting library.",
+    "author": "Fish Eleven",
+    "homepage": "https://github.com/mog1347/geomtoy.git/#README",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mog1347/geomtoy.git"
+    },
+    "scripts": {
+        "commit": "git-cz",
+        "prepare": "husky install"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@commitlint/cli": "^16.0.2",
+        "@commitlint/config-conventional": "^16.0.0",
+        "@commitlint/cz-commitlint": "^16.0.0",
+        "commitizen": "^4.2.4",
+        "husky": "^7.0.4",
+        "prettier": "^2.5.1",
+        "pretty-quick": "^3.1.3",
+        "rimraf": "^3.0.2",
+        "typedoc": "^0.22.11",
+        "typedoc-plugin-rename-defaults": "^0.4.0",
+        "typescript": "^4.5.4"
+    }
+}
