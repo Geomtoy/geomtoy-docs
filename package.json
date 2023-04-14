@@ -1,16 +1,20 @@
 {
-    "name": "geomtoy-documents",
+    "name": "geomtoy-docs",
     "version": "0.0.0",
     "description": "A 2D geometry responsive computing, visualizing and interacting library.",
     "author": "Fish Eleven",
-    "homepage": "https://github.com/mog1347/geomtoy.git/#README",
+    "homepage": "https://www.geomtoy.com",
     "repository": {
         "type": "git",
-        "url": "https://github.com/mog1347/geomtoy.git"
+        "url": "https://github.com/Geomtoy/geomtoy"
     },
     "scripts": {
         "commit": "git-cz",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "bundle-dts-util": "cd geomtoy/packages/util && npm run bundle-dts",
+        "bundle-dts-core": "cd geomtoy/packages/core && npm run bundle-dts",
+        "bundle-dts-view": "cd geomtoy/packages/view && npm run bundle-dts",
+        "generate": "node ./typedoc.js"
     },
     "license": "MIT",
     "devDependencies": {
@@ -18,10 +22,12 @@
         "@commitlint/config-conventional": "^16.0.0",
         "@commitlint/cz-commitlint": "^16.0.0",
         "commitizen": "^4.2.4",
+        "dts-bundle-generator": "^7.2.0",
         "husky": "^7.0.4",
+        "katex": "^0.15.1",
         "prettier": "^2.5.1",
         "pretty-quick": "^3.1.3",
-        "rimraf": "^3.0.2",
+        "symlink-dir": "^5.1.1",
         "typedoc": "^0.22.11",
         "typedoc-plugin-rename-defaults": "^0.4.0",
         "typescript": "^4.5.4"
