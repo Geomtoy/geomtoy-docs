@@ -1,4 +1,4 @@
-const TypeDoc = require("typedoc");
+const typeDoc = require("typedoc");
 const fs = require("fs/promises");
 const path = require("path");
 
@@ -8,7 +8,7 @@ const pkgConfig = {
 };
 
 async function main() {
-    const app = new TypeDoc.Application();
+    const app = new typeDoc.Application();
 
     app.bootstrap({
         name: "Geomtoy",
@@ -21,6 +21,7 @@ async function main() {
         excludeInternal: true,
         disableSources: true,
         readme: "none",
+        out: pkgConfig.docsGenDir,
         sort: ["static-first"],
         markedOptions: {
             mangle: false,
@@ -41,12 +42,17 @@ async function main() {
         categoryOrder: ["Entry", "Base", "Adaptor", "*"]
     });
 
+    // options for `typedoc-plugin-extras`, must after `app.bootstrap`
+    app.options.setValue("favicon", "./favicon.ico");
+    app.options.setValue("customDescription", "A 2D geometry responsive computing, visualizing and interacting library.");
+    app.options.setValue("footerDate", true);
+    app.options.setValue("footerTime", true);
+
     const project = app.convert();
     // project may not have converted correctly
     if (project) {
         // render docs
-        await app.generateDocs(project, pkgConfig.docsGenDir);
-
+        await app.generateDocs(project, app.options.getValue("out"));
         // do some css/js modify
         const docCssPath = path.resolve(pkgConfig.docsGenDir, "assets/style.css");
         const docJsPath = path.resolve(pkgConfig.docsGenDir, "assets/main.js");
