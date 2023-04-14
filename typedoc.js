@@ -23,6 +23,8 @@ async function main() {
         readme: "none",
         out: pkgConfig.docsGenDir,
         sort: ["static-first"],
+        categorizeByGroup: true,
+        categoryOrder: ["Entry", "Base", "Adaptor", "*"],
         markedOptions: {
             mangle: false,
             walkTokens(token) {
@@ -37,9 +39,7 @@ async function main() {
                     delete token.tokens;
                 }
             }
-        },
-        categorizeByGroup: true,
-        categoryOrder: ["Entry", "Base", "Adaptor", "*"]
+        }
     });
 
     // options for `typedoc-plugin-extras`, must after `app.bootstrap`
