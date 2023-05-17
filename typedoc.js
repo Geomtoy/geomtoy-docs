@@ -24,7 +24,7 @@ async function main() {
         out: pkgConfig.docsGenDir,
         sort: ["static-first"],
         categorizeByGroup: true,
-        categoryOrder: ["Entry", "Base", "Adaptor", "*"],
+        categoryOrder: ["Entry", "Base", "*"],
         markedOptions: {
             mangle: false,
             walkTokens(token) {
@@ -43,7 +43,7 @@ async function main() {
     });
 
     // options for `typedoc-plugin-extras`, must after `app.bootstrap`
-    app.options.setValue("favicon", "./favicon.ico");
+    app.options.setValue("favicon", "https://assets.geomtoy.com/icons/favicon.ico");
     app.options.setValue("customDescription", "A 2D geometry responsive computing, visualizing and interacting library.");
     app.options.setValue("footerDate", true);
     app.options.setValue("footerTime", true);
