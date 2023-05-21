@@ -43,8 +43,8 @@ async function main() {
     // options for `typedoc-plugin-extras`, must after `app.bootstrap`
     app.options.setValue("favicon", "https://assets.geomtoy.com/icons/favicon.ico");
     app.options.setValue("customDescription", "A 2D geometry responsive computing, visualizing and interacting library.");
-    app.options.setValue("footerDate", true);
-    app.options.setValue("footerTime", true);
+    app.options.setValue("footerTypedocVersion", true);
+    app.options.setValue("footerLastModified", true);
 
     const project = app.convert();
     // project may not have converted correctly
