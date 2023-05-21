@@ -3,7 +3,7 @@ const fs = require("fs/promises");
 const path = require("path");
 
 const pkgConfig = {
-    entryPoints: ["./geomtoy/packages/util", "./geomtoy/packages/core", "./geomtoy/packages/view"],
+    entryPoints: ["./geomtoy/packages/*"],
     docsGenDir: "./dist"
 };
 
@@ -15,16 +15,14 @@ async function main() {
         entryPointStrategy: "packages",
         cleanOutputDir: true,
         entryPoints: pkgConfig.entryPoints,
-        includeVersion: false,
+        includeVersion: true,
         excludePrivate: true,
         excludeProtected: true,
         excludeInternal: true,
         disableSources: true,
-        readme: "none",
+        readme: "./geomtoy/README.md",
         out: pkgConfig.docsGenDir,
         sort: ["static-first"],
-        categorizeByGroup: true,
-        categoryOrder: ["Entry", "Base", "*"],
         markedOptions: {
             mangle: false,
             walkTokens(token) {
@@ -66,14 +64,7 @@ async function main() {
 
         let docCss = await fs.readFile(docCssPath, "utf-8");
         let docJs = await fs.readFile(docJsPath, "utf-8");
-        // modify `comment` classes
-        docCss += `
-            dl.tsd-comment-tags dt {
-                display: inline-block;
-                float: none !important;
-                margin: 0 0 10px 0 !important;
-            }
-        `;
+
         // add `katex` css and js
         let katexCss = await fs.readFile(katexCssPath, "utf-8");
         let katexJs = await fs.readFile(katexJsPath, "utf-8");
