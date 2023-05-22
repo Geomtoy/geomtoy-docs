@@ -22,6 +22,7 @@ async function main() {
         disableSources: true,
         readme: "./geomtoy/README.md",
         out: pkgConfig.docsGenDir,
+        customCss: "./custom.css",
         sort: ["static-first"],
         markedOptions: {
             mangle: false,
